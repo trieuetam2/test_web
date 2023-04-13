@@ -1,0 +1,127 @@
+<div class="col-lg-12 padding-8">
+
+    <form action="/Admin/Create" enctype="multipart/form-data" method="post" novalidate="novalidate">
+       <div class="form-horizontal">
+                <div class="menu_option-head2">Thêm sản phẩm</div>
+                <hr>
+                
+                <div class="form-group">
+                    <label class="col-md-2" for="tensp">Tên sản phẩm (*)</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" id="tensp" name="tensp" required="required" type="text" value="">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="tensp" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label class="col-md-2">Hình đại diện (*)</label>
+                    <div class="col-md-10">
+    
+                        <input type="file" name="fileUpload" id="fileUpload" accept="image/*" style="border: none; margin-top: 10px;" required="">
+                        <div id="fileUploadSpan" style=" color: red; display: block; margin-top: 10px;"></div>
+    
+                        <img src="" id="pictureUpload" style="height: 200px;">
+    
+                        <input class="form-control text-box single-line" id="hinh" name="hinh" type="text" value="" disabled="" required="">
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label class="col-md-2">Thư viện ảnh</label>
+    
+                    <div class="col-md-4">
+                        <input style="visibility: hidden; display: block;" id="hinh1" name="hinh1" type="text" value="">
+                        <input type="file" id="uploadhinh" name="uploadhinh" accept="image/*">
+                        <!--<div id="fileUploadSpan1" style=" color: red; display: block; margin-top: 10px;"></div>-->
+                        <input type="hidden" name="imageData" id="imageData">
+    
+                        <div style="display: flex; padding-top: 20px; height: 200px;">
+                            <canvas id="canvas" width="0" height="0"></canvas>
+                            <div id="afterConvert"></div>
+                        </div>
+    
+                        <div class="status">
+                            <label for="GaussianAlgorithm">Làm mờ (mịn) gauss</label>
+                            <input type="range" min="0" max="10" value="0" id="GaussianAlgorithm" oninput="realTimeRangeForGauss(this.value)">
+    
+                            <span id="currentValueGauss" class="currentValue">0</span>
+                        </div>
+    
+                    </div>
+    
+                    <label class="col-md-2">Thư viện ảnh 2</label>
+                    <div class="col-md-4">
+                        <input style="visibility: hidden; display: block;" id="hinh2" name="hinh2" type="text" value="">
+                        <input type="file" id="uploadhinh1" name="uploadhinh1" accept="image/*">
+                        <img src="" id="imguploadhinh1" style="height: 200px;">
+                        <div id="fileUploadSpan2" style=" color: red; display: block; margin-top: 10px;"></div>
+                    </div>
+    
+                    <label class="col-md-2">Thư viện ảnh 3</label>
+                    <div class="col-md-4">
+                        <input style="visibility: hidden; display: block;" id="hinh3" name="hinh3" type="text" value="">
+                        <input type="file" id="uploadhinh2" name="uploadhinh2" accept="image/*">
+                        <img src="" id="imguploadhinh2" style="height: 200px;">
+                        <div id="fileUploadSpan3" style=" color: red; display: block; margin-top: 10px;"></div>
+                    </div>
+    
+    
+    
+                </div>
+    
+                <div class="form-group">
+                    <label class="col-md-2" for="tensp">Giá bán (*)</label>
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" data-val="true" data-val-number="The field giaban must be a number." id="giaban" max="30000000" min="1000" name="giaban" required="required" type="text" value="">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="giaban" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label class="col-md-2" for="tensp">Giảm giá</label>
+                    <div class="col-md-10">
+                        <input value="0" class="form-control text-box single-line" data-val="true" data-val-number="The field giamgia must be a number." id="giamgia" max="100" min="0" name="giamgia" required="required" type="number">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="giamgia" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label class="col-md-2" for="tensp">Danh mục (*)</label>
+                    <div class="col-md-10">
+                        <select class="form-control" data-val="true" data-val-number="The field idDanhmuc must be a number." id="idDanhmuc" name="idDanhmuc" required="required"><option value="">Chọn danh mục</option>
+    <option value="1">Sản phẩm cho chó</option>
+    <option value="2">Sản phẩm cho mèo</option>
+    <option value="3">Đồ ăn cho chó</option>
+    <option value="4">Phụ kiện cho chó</option>
+    <option value="5">Vật dụng cho chó</option>
+    <option value="6">Đồ ăn cho mèo</option>
+    <option value="7">Phụ kiện cho mèo</option>
+    <option value="8">Vật dụng cho mèo</option>
+    <option value="9">Con giống</option>
+    <option value="10">Chó</option>
+    <option value="11">Mèo</option>
+    </select>
+                        <span class="field-validation-valid text-danger" data-valmsg-for="idDanhmuc" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label class="col-md-2" for="tensp">Số lượng tồn</label>
+                    <div class="col-md-10">
+                        <input value="0" class="form-control text-box single-line" data-val="true" data-val-number="The field soluongton must be a number." id="soluongton" max="1000" min="0" name="soluongton" required="required" type="number">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="soluongton" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" id="btnSave">
+                    </div>
+                </div>
+            </div>
+    </form>
+        <div>
+            <a href="/Admin/QLSanPham">Quay lại</a>
+        </div>
+    
+    </div>
